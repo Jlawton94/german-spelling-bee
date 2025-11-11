@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">German Spelling Bee</string>
+    <string name="title_activity_main">German Spelling Bee</string>
+    <string name="package_name">com.germanspellingbee.app</string>
+    <string name="custom_url_scheme">com.germanspellingbee.app</string>
+</resources>
