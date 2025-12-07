@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 # Dictionary tools folder
-dictonary_tools/
+dictonary_tools/combined_games
+dictonary_tools/game_data
+dictonary_tools/input_files
