@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import './App.css'
+import SpellingBee from './Spelling Bee/Spelling_Bee'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-
-    </>
+    <div className="App">
+      <SpellingBee />
+    </div>
   )
 }
 
