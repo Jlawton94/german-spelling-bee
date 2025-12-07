@@ -1,3 +1,15 @@
+# Intro
+
+This is a project to build the spelling bee NYT game but with gemran language. 
+
+I also plan to add a few features to make the progress diffrent from just daily but will see if I get to it. 
+
+Its running with capacitor to output iso and Android apps
+
+# Data Source
+
+If you want to build your own verion you need data. There are some python file to do with in /dictonary_tools but you need the data, I got mine [here](https://github.com/Jonny-exe/German-Words-Library)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
