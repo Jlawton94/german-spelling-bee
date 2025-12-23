@@ -71,7 +71,7 @@ const GuessHex = forwardRef(function GuessHex(
                             onMouseDown={() => setActiveIdx(i)}
                             onMouseUp={() => {
                                 setActiveIdx(null);
-                                if (onSubmit) onSubmit(`hex-${i}`);
+                                if (onSubmit) onSubmit(label);
                             }}
                             aria-label={`hex-${i}`}
                         >
@@ -101,7 +101,7 @@ const GuessHex = forwardRef(function GuessHex(
                     onMouseDown={() => setActiveIdx('center')}
                     onMouseUp={() => {
                         setActiveIdx(null);
-                        if (onSubmit) onSubmit('hex-center');
+                        if (onSubmit) onSubmit(keyLetter || 'G');
                     }}
                     aria-label="hex-center"
                 >

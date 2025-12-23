@@ -3,9 +3,11 @@ import GuessHex from './Guess_Hex';
 
 type Props = {
     onSubmit?: (word: string) => void;
+    guessLetters?: string[];
+    keyLetter?: string;
 };
 
-export default function GuessingDisplay({ onSubmit }: Props) {
+export default function GuessingDisplay({ onSubmit, guessLetters, keyLetter }: Props) {
     const [currentWord, setCurrentWord] = useState('');
     const hexRef = useRef<{ shuffleHexes: () => void }>(null);
 
@@ -20,6 +22,10 @@ export default function GuessingDisplay({ onSubmit }: Props) {
         hexRef.current?.shuffleHexes();
     }
 
+    function handleHexClick(letter: string) {
+        setCurrentWord((prev) => prev + letter);
+    }
+
     return (
         <div className="mt-3 d-flex flex-column align-items-stretch">
             <input
@@ -30,9 +36,10 @@ export default function GuessingDisplay({ onSubmit }: Props) {
                 className="form-control form-control-lg border-0 bg-transparent w-100 text-center"
             />
             <GuessHex
-                guessLetters={['T', 'A', 'B', 'C', 'D', 'E']}
-                keyLetter="G"
+                guessLetters={guessLetters}
+                keyLetter={keyLetter}
                 shuffleRef={hexRef}
+                onSubmit={handleHexClick}
             />
             <div className="d-flex justify-content-between mt-2">
                 <button

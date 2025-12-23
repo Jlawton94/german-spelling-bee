@@ -27,3 +27,7 @@ dist-ssr
 dictonary_tools/combined_games
 dictonary_tools/game_data
 dictonary_tools/input_files
+dictonary_tools/final_play_data
+
+# Game Data
+src/Game Data
