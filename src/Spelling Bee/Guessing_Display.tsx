@@ -22,6 +22,10 @@ export default function GuessingDisplay({ onSubmit, guessLetters, keyLetter }: P
         hexRef.current?.shuffleHexes();
     }
 
+    function handleClear() {
+        setCurrentWord('');
+    }
+
     function handleHexClick(letter: string) {
         setCurrentWord((prev) => prev + letter);
     }
@@ -42,6 +46,12 @@ export default function GuessingDisplay({ onSubmit, guessLetters, keyLetter }: P
                 onSubmit={handleHexClick}
             />
             <div className="d-flex justify-content-between mt-2">
+                <button
+                    className="btn btn-outline-secondary"
+                    onClick={handleClear}
+                >
+                    Clear
+                </button>
                 <button
                     className="btn btn-outline-secondary"
                     onClick={handleShuffle}

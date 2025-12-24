@@ -1,0 +1,51 @@
+.spelling-bee-root {
+    padding: 20px;
+}
+
+.score-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.progress-bar-container {
+    width: 100%;
+    max-width: 300px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 0 auto 10px auto;
+    overflow: hidden;
+    border: 2px solid #ccc;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.progress-bar-fill.low {
+    background-color: #ff4444;
+}
+
+.progress-bar-fill.medium {
+    background-color: #ffaa00;
+}
+
+.progress-bar-fill.high {
+    background-color: #44aa44;
+}
+
+.progress-bar-fill.max {
+    background-color: #00aa00;
+}
+
+.score-text {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.loading, .error {
+    padding: 20px;
+}

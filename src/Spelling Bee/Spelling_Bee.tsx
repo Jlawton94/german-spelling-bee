@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GuessingDisplay from './Guessing_Display';
+import './Spelling_Bee.css';
 
 type Props = {};
 
@@ -12,6 +13,7 @@ interface GameData {
 
 export default function SpellingBee(_: Props) {
     const [score, setScore] = useState(0);
+    const [maxScore, setMaxScore] = useState(0);
     const [gameData, setGameData] = useState<GameData | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -34,6 +36,12 @@ export default function SpellingBee(_: Props) {
                 
                 console.log('Loaded game data:', selectedFile, data);
                 setGameData(data);
+                
+                var totalLetters = 0
+                for( var word in data.words) {
+                    totalLetters += word.length
+                }
+                setMaxScore(totalLetters);
             } catch (error) {
                 console.error('Failed to load game data:', error);
                 // Fallback to hardcoded data with new format
@@ -66,7 +74,7 @@ export default function SpellingBee(_: Props) {
             // Check if the word is in the valid words list
             if (gameData.words.includes(word)) {
                 console.log('Valid word!');
-                setScore((s) => s + 1);
+                setScore((s) => s + word.length);
             } else {
                 console.log('Invalid word');
             }
@@ -74,23 +82,37 @@ export default function SpellingBee(_: Props) {
     }
 
     if (loading) {
-        return <div style={{ padding: 20 }}>Loading game...</div>;
+        return <div className="loading">Loading game...</div>;
     }
 
     if (!gameData) {
-        return <div style={{ padding: 20 }}>Failed to load game data</div>;
+        return <div className="error">Failed to load game data</div>;
     }
 
     // Extract the center letter (key letter) and outer letters from the new format
     const centerLetter = gameData.key_letter;
     const outerLetters = gameData.other_letters;
 
+    // Calculate progress percentage
+    const progressPercentage = maxScore > 0 ? (score / maxScore) * 100 : 0;
+    
+    // Determine progress level for CSS class
+    const getProgressClass = () => {
+        if (progressPercentage < 30) return 'low';
+        if (progressPercentage < 60) return 'medium';
+        if (progressPercentage < 90) return 'high';
+        return 'max';
+    };
+
     return (
-        <div className="spelling-bee-root" style={{ padding: 20 }}>
-            <div style={{ marginBottom: 20, textAlign: 'center' }}>
-                <h2>German Spelling Bee</h2>
-                <p>Score: {score}</p>
-                <p>Words found: {score} / {gameData.total_words}</p>
+        <div className="spelling-bee-root">
+            {/* Progress Bar Container */}
+            <div className="progress-bar-container">
+                {/* Progress Bar Fill */}
+                <div 
+                    className={`progress-bar-fill ${getProgressClass()}`}
+                    style={{ width: `${progressPercentage}%` }}
+                />
             </div>
             <GuessingDisplay 
                 onSubmit={handleGuessSubmit}
